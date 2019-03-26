@@ -1,0 +1,39 @@
+{
+  "name": "react-flex-layout",
+  "version": "0.0.1",
+  "description": "React flex layout",
+  "main": "dist/index.js",
+  "module": "dist/es/index.js",
+  "scripts": {
+    "build": "rimraf dist/es && NODE_ENV=es babel src --out-dir dist/es",
+    "lint": "eslint 'src/**'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryank109/react-flex-layout.git"
+  },
+  "keywords": [
+    "react",
+    "flex",
+    "layout"
+  ],
+  "author": "Ryan Kim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ryank109/react-flex-layout/issues"
+  },
+  "homepage": "https://github.com/ryank109/react-flex-layout#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "eslint": "^5.15.3",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5"
+  },
+  "peerDependencies": {
+    "react": ">=16",
+    "react-dom": ">=16"
+  }
+}
