@@ -6,7 +6,8 @@
   "module": "dist/es/index.js",
   "scripts": {
     "build": "rimraf dist/es && NODE_ENV=es babel src --out-dir dist/es",
-    "lint": "eslint 'src/**'"
+    "lint": "eslint 'src/**'",
+    "storybook": "start-storybook"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,9 @@
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
+    "@emotion/babel-preset-css-prop": "^10.0.9",
+    "@storybook/react": "^5.0.5",
+    "babel-loader": "^8.0.5",
     "eslint": "^5.15.3",
     "react": "^16.8.5",
     "react-dom": "^16.8.5"
@@ -35,5 +39,8 @@
   "peerDependencies": {
     "react": ">=16",
     "react-dom": ">=16"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.10"
   }
 }
