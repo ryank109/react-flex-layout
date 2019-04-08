@@ -1,16 +1,18 @@
-import React from 'react';
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
+import { cssHeight, shouldForwardProp, whenValue } from './utils';
 
-export const Row = props => (
-  <div
-    css={css`
-      display: flex;
-      flex-grow: 0;
-      flex-shrink: 1;
-      flex-wrap: wrap;
-    `}
-    {...props}
-  />
-);
+const getHeight = ({ height }) => whenValue(cssHeight)(height);
+const flexGrow = ({ shouldGrow }) => (shouldGrow ? 1 : 0);
 
-Row.displayName = 'Row';
+export const Row = styled('div', { shouldForwardProp })`
+  box-sizing: border-box;
+  display: flex;
+  flex-grow: ${flexGrow};
+  flex-shrink: 1;
+  flex-wrap: wrap;
+  ${getHeight}
+`;
+
+Row.defaultProps = {
+  shouldGrow: false,
+};

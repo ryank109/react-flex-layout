@@ -1,38 +1,40 @@
-import React from 'react';
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
+import {
+  calcFlexBasis,
+  cssWidth,
+  mq,
+  shouldForwardProp,
+  whenValue,
+} from './utils';
+import { PageContainer } from './container';
 
-const calcFlexBasisPercent = (base, span) => {
-	const result = base * span;
-	return result > 100 ? 100 : result;
-};
+const flexGrow = ({ span }) => span;
+const padding = ({ padding }) => `${padding}px`;
+const getCssWidth = ({ width }) => whenValue(cssWidth)(width);
+const getMedia = size => ({ media }) => media(size);
 
-export const Column = ({ span, ...props }) => (
-  <div
-	  css={css`
-      background-color: #eee;
-      border: 1px solid #ddd;
-      display: flex;
-      flex-direction: column;
-      flex-grow: ${span};
-      flex-shrink: 0;
-      padding: 20px;
+export const Column = styled('div', { shouldForwardProp })`
+  box-sizing: border-box;
+  display: flex;
+  flex-basis: 100%;
+  flex-direction: column;
+  flex-grow: ${flexGrow};
+  flex-shrink: 0;
+  padding: ${padding};
 
-      @media (min-width: 768px) {
-        flex-basis: ${calcFlexBasisPercent(10, span)}%;
-      }
-      @media (max-width: 768px) {
-        flex-basis: ${calcFlexBasisPercent(50, span)}%;
-      }
-      @media (max-width: 500px) {
-        flex-basis: 100%;
-      }
-    `}
-    {...props}
-  />
-);
+  ${PageContainer} & {
+    ${getMedia('tablet')} {
+      flex-basis: ${calcFlexBasis(50)}%;
+    }
+    ${getMedia('desktop')} {
+      flex-basis: ${calcFlexBasis(20)}%;
+      ${getCssWidth}
+    }
+  }
+`;
 
 Column.defaultProps = {
+  media: mq,
+  padding: 10,
   span: 1,
 };
-
-Column.displayName = 'Column';
