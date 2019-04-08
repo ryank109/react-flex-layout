@@ -2,7 +2,7 @@
 
 ### Components
 
-#### Continer
+#### Container
 
 - Generic container
 
@@ -23,6 +23,8 @@
  <Footer />
 </Container>
 ```
+
+- Also see [layout.stories.jsx](https://github.com/ryank109/react-flex-layout/blob/master/stories/layout.stories.jsx) for using `Row`, `Column` outside of the `PageContainer`
 
 #### Row
 
