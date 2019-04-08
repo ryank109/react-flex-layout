@@ -139,11 +139,7 @@ storiesOf('Layout', module)
             </Row>
           </Container>
         </Sidebar>
-        <PageContainer
-          css={css`
-            padding: 10px 10px;
-          `}
-        >
+        <PageContainer>
           <Row>
             <Column>
               <Card>Column 1</Card>
